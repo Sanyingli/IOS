@@ -14,6 +14,9 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Strom Viewer"
+        
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try!fm.contentsOfDirectory(atPath: path)
@@ -40,6 +43,20 @@ class ViewController: UITableViewController {
         cell.textLabel?.text = pictures[indexPath.row]
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //try load "detail" view and typecasting it to be DetailViewController
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController
+        {
+            //success then set its selectedImage property
+            vc.selectedImage = pictures[indexPath.row]
+            
+            //push it onto navigation controllor
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

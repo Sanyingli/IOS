@@ -11,7 +11,7 @@ import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
     
-    var websites = ["github.com/Sanyingli/IOS","apple.com","hackingwithswift.com"]
+    var websites = ["github.com","apple.com"]
     var webView: WKWebView!
     var progressView: UIProgressView!
     
@@ -26,7 +26,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         
         
-        let url = URL(string: "https://" + websites[0])!
+        let url = URL(string: "https://github.com/Sanyingli/IOS")!
         webView.load(URLRequest(url: url))
         
         webView.allowsBackForwardNavigationGestures = true//enables a property on the web view that allows users to swipe from the left or right edge to move backward or forward in their web browsing
